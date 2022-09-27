@@ -27,6 +27,14 @@ macro_rules! colour_define {
     };
 }
 
+macro_rules! style {
+    ( $name: ident, $num:expr) => {
+        fn $name(&self) -> String {
+            format!("\u{001b}[{}m", $num) + &self.to_string()
+        }
+    };
+}
+
 pub trait Style {
     colour_define!(black, light_black, bg_black, bg_light_black);
     colour_define!(red, light_red, bg_red, bg_light_red);
@@ -67,30 +75,14 @@ impl Style for &str {
         self.to_string() + &"\u{001b}[0m".to_owned()
     }
 
-    fn bold(&self) -> String {
-        "\u{001b}[1m".to_owned() + &self.to_string()
-    }
-    fn faint(&self) -> String {
-        "\u{001b}[2m".to_owned() + &self.to_string()
-    }
-    fn italic(&self) -> String {
-        "\u{001b}[3m".to_owned() + &self.to_string()
-    }
-    fn underline(&self) -> String {
-        "\u{001b}[4m".to_owned() + &self.to_string()
-    }
-    fn slow_blink(&self) -> String {
-        "\u{001b}[5m".to_owned() + &self.to_string()
-    }
-    fn rapid_blink(&self) -> String {
-        "\u{001b}[6m".to_owned() + &self.to_string()
-    }
-    fn reverse(&self) -> String {
-        "\u{001b}[7m".to_owned() + &self.to_string()
-    }
-    fn strike(&self) -> String {
-        "\u{001b}[9m".to_owned() + &self.to_string()
-    }
+    style!(bold, 1);
+    style!(faint, 2);
+    style!(italic, 3);
+    style!(underline, 4);
+    style!(slow_blink, 5);
+    style!(rapid_blink, 6);
+    style!(reverse, 7);
+    style!(strike, 9);
 }
 
 impl Style for String {

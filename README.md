@@ -35,4 +35,4 @@ fn main()  {
 - [x] Backgrounds
 - [x] Styling
 - [ ] RGB colors
-- [ ] Macro for styling
+- [x] Macro for styling

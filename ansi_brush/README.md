@@ -4,7 +4,7 @@
 
 ## Examples
 
-```rs
+```rust
 use ansi_brush::Style;
 
 fn main()  {

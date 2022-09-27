@@ -1,87 +1,55 @@
+macro_rules! colour {
+    ( $default: ident, $light: ident, $default_bg:ident, $light_bg:ident, $num:expr ) => {
+        fn $default(&self) -> String {
+            format!("\u{001b}[{}m", 30 + $num) + &self.to_string()
+        }
+
+        fn $light(&self) -> String {
+            format!("\u{001b}[{}m", 90 + $num) + &self.to_string()
+        }
+
+        fn $default_bg(&self) -> String {
+            format!("\u{001b}[{}m", 40 + $num) + &self.to_string()
+        }
+
+        fn $light_bg(&self) -> String {
+            format!("\u{001b}[{}m", 100 + $num) + &self.to_string()
+        }
+    };
+}
+
+macro_rules! colour_define {
+    ( $default: ident, $light: ident, $default_bg:ident, $light_bg:ident) => {
+        fn $default(&self) -> String;
+        fn $light(&self) -> String;
+        fn $default_bg(&self) -> String;
+        fn $light_bg(&self) -> String;
+    };
+}
+
+
 pub trait Style {
-    fn black(&self) -> String;
-    fn light_black(&self) -> String;
-    fn red(&self) -> String;
-    fn light_red(&self) -> String;
-    fn green(&self) -> String;
-    fn light_green(&self) -> String;
-    fn yellow(&self) -> String;
-    fn light_yellow(&self) -> String;
-    fn blue(&self) -> String;
-    fn light_blue(&self) -> String;
-    fn magenta(&self) -> String;
-    fn light_magenta(&self) -> String;
-    fn cyan(&self) -> String;
-    fn light_cyan(&self) -> String;
-    fn white(&self) -> String;
-    fn light_white(&self) -> String;
+    colour_define!(black, light_black, bg_black, bg_light_black);
+    colour_define!(red, light_red, bg_red, bg_light_red);
+    colour_define!(green, light_green, bg_green, bg_light_green);
+    colour_define!(yellow, light_yellow, bg_yellow, bg_light_yellow);
+    colour_define!(blue, light_blue, bg_blue, bg_light_blue);
+    colour_define!(magenta, light_magenta, bg_magenta, bg_light_magenta);
+    colour_define!(cyan, light_cyan, bg_cyan, bg_light_cyan);
+    colour_define!(white, light_white, bg_white, bg_light_white);
+    
     fn reset(&self) -> String;
 }
 
 impl Style for &str {
-    fn black(&self) -> String {
-        "\u{001b}[30m".to_owned() + &self.to_string()
-    }
-
-    fn light_black(&self) -> String {
-        "\u{001b}[90m".to_owned() + &self.to_string()
-    }
-
-    fn red(&self) -> String {
-        "\u{001b}[31m".to_owned() + &self.to_string()
-    }
-
-    fn light_red(&self) -> String {
-        "\u{001b}[91m".to_owned() + &self.to_string()
-    }
-
-    fn green(&self) -> String {
-        "\u{001b}[32m".to_owned() + &self.to_string()
-    }
-
-    fn light_green(&self) -> String {
-        "\u{001b}[92m".to_owned() + &self.to_string()
-    }
-
-    fn yellow(&self) -> String {
-        "\u{001b}[33m".to_owned() + &self.to_string()
-    }
-
-    fn light_yellow(&self) -> String {
-        "\u{001b}[93m".to_owned() + &self.to_string()
-    }
-
-    fn blue(&self) -> String {
-        "\u{001b}[34m".to_owned() + &self.to_string()
-    }
-
-    fn light_blue(&self) -> String {
-        "\u{001b}[94m".to_owned() + &self.to_string()
-    }
-
-    fn magenta(&self) -> String {
-        "\u{001b}[35m".to_owned() + &self.to_string()
-    }
-
-    fn light_magenta(&self) -> String {
-        "\u{001b}[95m".to_owned() + &self.to_string()
-    }
-
-    fn cyan(&self) -> String {
-        "\u{001b}[36m".to_owned() + &self.to_string()
-    }
-
-    fn light_cyan(&self) -> String {
-        "\u{001b}[96m".to_owned() + &self.to_string()
-    }
-
-    fn white(&self) -> String {
-        "\u{001b}[37m".to_owned() + &self.to_string()
-    }
-
-    fn light_white(&self) -> String {
-        "\u{001b}[97m".to_owned() + &self.to_string()
-    }
+    colour!(black, light_black, bg_black, bg_light_black, 0);
+    colour!(red, light_red, bg_red, bg_light_red, 1);
+    colour!(green, light_green, bg_green, bg_light_green, 2);
+    colour!(yellow, light_yellow, bg_yellow, bg_light_yellow, 3);
+    colour!(blue, light_blue, bg_blue, bg_light_blue, 4);
+    colour!(magenta, light_magenta, bg_magenta, bg_light_magenta, 5);
+    colour!(cyan, light_cyan, bg_cyan, bg_light_cyan, 6);
+    colour!(white, light_white, bg_white, bg_light_white, 7);
 
     fn reset(&self) -> String {
         "\u{001b}[0m".to_owned() + &self.to_string()

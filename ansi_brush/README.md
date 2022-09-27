@@ -6,8 +6,9 @@
 
 - [x] 8 colors
 - [x] 16 colors
-- [ ] 256 colors
-- [ ] Backgrounds
+- [x] Macro
+- [x] 256 colors
+- [x] Backgrounds
 - [ ] Styling
   - [ ] Bold
   - [ ] Faint

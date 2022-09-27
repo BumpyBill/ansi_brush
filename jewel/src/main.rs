@@ -1,6 +1,6 @@
+use ansi_brush::Style;
 use parser::Lexer;
 use serde::Deserialize;
-use ansi_brush::Style;
 
 mod parser;
 
@@ -18,25 +18,7 @@ fn main() -> anyhow::Result<()> {
         println!("{:?}", token);
     }
 
-    println!("{}", "Goodbye, Mars!".black());
-    println!("{}", "Hello, World!".light_black());
-    println!("{}", "Goodbye, Mars!".red());
-    println!("{}", "Hello, World!".light_red());
-    println!("{}", "Goodbye, Mars!".green());
-    println!("{}", "Hello, World!".light_green());
-    println!("{}", "Goodbye, Mars!".blue());
-    println!("{}", "Hello, World!".light_blue());
-    println!("{}", "Goodbye, Mars!".magenta());
-    println!("{}", "Hello, World!".light_magenta());
-    println!("{}", "Goodbye, Mars!".cyan());
-    println!("{}", "Hello, World!".light_cyan());
-    println!("{}", "Goodbye, Mars!".white());
-    println!("{}", "Hello, World!".light_white());
-    println!(
-        "{} {}",
-        "Hello,".red(),
-        "World!".reset()
-    );
+    println!("{}{}", "Goodbye, Mars!".bg_light_cyan(), "".reset());
 
     Ok(())
 }

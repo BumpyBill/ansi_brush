@@ -27,7 +27,6 @@ macro_rules! colour_define {
     };
 }
 
-
 pub trait Style {
     colour_define!(black, light_black, bg_black, bg_light_black);
     colour_define!(red, light_red, bg_red, bg_light_red);
@@ -37,8 +36,9 @@ pub trait Style {
     colour_define!(magenta, light_magenta, bg_magenta, bg_light_magenta);
     colour_define!(cyan, light_cyan, bg_cyan, bg_light_cyan);
     colour_define!(white, light_white, bg_white, bg_light_white);
-    
+
     fn reset(&self) -> String;
+    fn conclude(&self) -> String;
 }
 
 impl Style for &str {
@@ -53,5 +53,28 @@ impl Style for &str {
 
     fn reset(&self) -> String {
         "\u{001b}[0m".to_owned() + &self.to_string()
+    }
+
+    fn conclude(&self) -> String {
+        self.to_string() + &"\u{001b}[0m".to_owned()
+    }
+}
+
+impl Style for String {
+    colour!(black, light_black, bg_black, bg_light_black, 0);
+    colour!(red, light_red, bg_red, bg_light_red, 1);
+    colour!(green, light_green, bg_green, bg_light_green, 2);
+    colour!(yellow, light_yellow, bg_yellow, bg_light_yellow, 3);
+    colour!(blue, light_blue, bg_blue, bg_light_blue, 4);
+    colour!(magenta, light_magenta, bg_magenta, bg_light_magenta, 5);
+    colour!(cyan, light_cyan, bg_cyan, bg_light_cyan, 6);
+    colour!(white, light_white, bg_white, bg_light_white, 7);
+
+    fn reset(&self) -> String {
+        "\u{001b}[0m".to_owned() + &self.to_string()
+    }
+
+    fn conclude(&self) -> String {
+        self.to_string() + &"\u{001b}[0m".to_owned()
     }
 }

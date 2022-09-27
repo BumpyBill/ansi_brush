@@ -18,7 +18,8 @@ fn main() -> anyhow::Result<()> {
         println!("{:?}", token);
     }
 
-    println!("{}{}", "Goodbye, Mars!".bg_light_cyan(), "".reset());
+    println!("{} {}", "Hello,".light_cyan(), "World!".reset());
+    println!("{}", "Goodbye, Mars!".red().conclude());
 
     Ok(())
 }

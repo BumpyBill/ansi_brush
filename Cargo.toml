@@ -1,6 +1,6 @@
 [workspace]
 
 members = [
-    "prompt",
+    "jewel",
     "ansi_brush",
 ]

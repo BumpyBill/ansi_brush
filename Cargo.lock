@@ -13,22 +13,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "98161a4e3e2184da77bb14f02184cdd111e83bbbcc9979dfee3c44b9a85f5602"
 
 [[package]]
-name = "proc-macro2"
-version = "1.0.44"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7bd7356a8122b6c4a24a82b278680c73357984ca2fc79a0f9fa6dea7dced7c58"
-dependencies = [
- "unicode-ident",
-]
-
-[[package]]
-name = "prompt"
+name = "jewel"
 version = "0.1.0"
 dependencies = [
  "ansi_brush",
  "anyhow",
  "serde",
  "toml",
+]
+
+[[package]]
+name = "proc-macro2"
+version = "1.0.44"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7bd7356a8122b6c4a24a82b278680c73357984ca2fc79a0f9fa6dea7dced7c58"
+dependencies = [
+ "unicode-ident",
 ]
 
 [[package]]

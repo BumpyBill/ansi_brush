@@ -1,23 +1,13 @@
+# ansi_brush
+
+Ultra lightweight ANSI styling
+
+## Examples
+
+```rust
 use ansi_brush::Style;
-use parser::Lexer;
-use serde::Deserialize;
 
-mod parser;
-
-#[derive(Deserialize)]
-struct Config {
-    format: String,
-}
-
-fn main() -> anyhow::Result<()> {
-    let config_source = std::fs::read_to_string("./test.toml").expect("Unable to read config");
-    let config: Config = toml::from_str(&config_source)?;
-
-    let lexer = Lexer::new(&config.format);
-    for token in lexer {
-        println!("{:?}", token);
-    }
-
+fn main()  {
     println!("{} {}", "Hello,".light_cyan().bold(), "World!".reset());
     // always put "reset" LAST after each style to revert the previous line's styles
     println!(
@@ -33,6 +23,16 @@ fn main() -> anyhow::Result<()> {
     );
     // use conclude to stop background bleeding into next lines (try it without conclude!)
     println!("{}", "Goodbye, Mars!".bg_red().underline().italic().conclude().reset());
-
-    Ok(())
 }
+```
+
+### TODO
+
+- [x] 8 colors
+- [x] 16 colors
+- [x] Macro
+- [ ] 256 colors
+- [x] Backgrounds
+- [x] Styling
+- [ ] RGB colors
+- [ ] Macro for styling

@@ -1,0 +1,1 @@
+format = "[bold green]$cwd $indicator"

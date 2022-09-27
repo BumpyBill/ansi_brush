@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "prompt",
+    "ansi_brush",
+]

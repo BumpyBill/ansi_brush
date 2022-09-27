@@ -1,6 +1,6 @@
 # ansi_brush
 
-> ANSI Styling for Rust
+Ultra lightweight ANSI styling
 
 ## Examples
 

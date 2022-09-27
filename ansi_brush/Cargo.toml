@@ -2,7 +2,7 @@
 name = "ansi_brush"
 version = "0.0.3"
 edition = "2021"
-description = "ANSI Styling"
+description = "Ultra lightweight ANSI styling"
 license = "MIT"
 keywords = ["ansi", "color", "colour", "terminal", "styling"]
 documentation = "https://docs.rs/ansi_brush/"

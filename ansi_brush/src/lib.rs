@@ -39,6 +39,15 @@ pub trait Style {
 
     fn reset(&self) -> String;
     fn conclude(&self) -> String;
+
+    fn bold(&self) -> String;
+    fn faint(&self) -> String;
+    fn italic(&self) -> String;
+    fn underline(&self) -> String;
+    fn slow_blink(&self) -> String;
+    fn rapid_blink(&self) -> String;
+    fn reverse(&self) -> String;
+    fn strike(&self) -> String;
 }
 
 impl Style for &str {
@@ -54,9 +63,33 @@ impl Style for &str {
     fn reset(&self) -> String {
         "\u{001b}[0m".to_owned() + &self.to_string()
     }
-
     fn conclude(&self) -> String {
         self.to_string() + &"\u{001b}[0m".to_owned()
+    }
+
+    fn bold(&self) -> String {
+        "\u{001b}[1m".to_owned() + &self.to_string()
+    }
+    fn faint(&self) -> String {
+        "\u{001b}[2m".to_owned() + &self.to_string()
+    }
+    fn italic(&self) -> String {
+        "\u{001b}[3m".to_owned() + &self.to_string()
+    }
+    fn underline(&self) -> String {
+        "\u{001b}[4m".to_owned() + &self.to_string()
+    }
+    fn slow_blink(&self) -> String {
+        "\u{001b}[5m".to_owned() + &self.to_string()
+    }
+    fn rapid_blink(&self) -> String {
+        "\u{001b}[6m".to_owned() + &self.to_string()
+    }
+    fn reverse(&self) -> String {
+        "\u{001b}[7m".to_owned() + &self.to_string()
+    }
+    fn strike(&self) -> String {
+        "\u{001b}[9m".to_owned() + &self.to_string()
     }
 }
 
@@ -73,8 +106,32 @@ impl Style for String {
     fn reset(&self) -> String {
         "\u{001b}[0m".to_owned() + &self.to_string()
     }
-
     fn conclude(&self) -> String {
         self.to_string() + &"\u{001b}[0m".to_owned()
+    }
+
+    fn bold(&self) -> String {
+        "\u{001b}[1m".to_owned() + &self.to_string()
+    }
+    fn faint(&self) -> String {
+        "\u{001b}[2m".to_owned() + &self.to_string()
+    }
+    fn italic(&self) -> String {
+        "\u{001b}[3m".to_owned() + &self.to_string()
+    }
+    fn underline(&self) -> String {
+        "\u{001b}[4m".to_owned() + &self.to_string()
+    }
+    fn slow_blink(&self) -> String {
+        "\u{001b}[5m".to_owned() + &self.to_string()
+    }
+    fn rapid_blink(&self) -> String {
+        "\u{001b}[6m".to_owned() + &self.to_string()
+    }
+    fn reverse(&self) -> String {
+        "\u{001b}[7m".to_owned() + &self.to_string()
+    }
+    fn strike(&self) -> String {
+        "\u{001b}[9m".to_owned() + &self.to_string()
     }
 }

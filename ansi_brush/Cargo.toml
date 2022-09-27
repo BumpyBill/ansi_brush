@@ -1,6 +1,6 @@
 [package]
 name = "ansi_brush"
-version = "0.0.23"
+version = "0.0.3"
 edition = "2021"
 description = "ANSI Styling"
 license = "MIT"

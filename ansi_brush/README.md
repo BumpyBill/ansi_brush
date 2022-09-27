@@ -8,9 +8,21 @@
 use ansi_brush::Style;
 
 fn main()  {
-    println!("{} {}", "Hello,".light_cyan(), "World!".reset());
+    println!("{} {}", "Hello,".light_cyan().bold(), "World!".reset());
+    // always put "reset" LAST after each style to revert the previous line's styles
+    println!(
+        "{} {} {} {} {} {} {} {}",
+        "Bold".bold(),
+        "Faint".faint().reset(),
+        "Italic".italic().reset(),
+        "Underline".underline().reset(),
+        "Slow Blink".slow_blink().reset(),
+        "Rapid Blink".rapid_blink().reset(),
+        "Reverse".reverse().reset(),
+        "Strike".strike().reset()
+    );
     // use conclude to stop background bleeding into next lines (try it without conclude!)
-    println!("{}", "Goodbye, Mars!".red().conclude());
+    println!("{}", "Goodbye, Mars!".bg_red().underline().italic().conclude().reset());
 }
 ```
 
@@ -19,12 +31,7 @@ fn main()  {
 - [x] 8 colors
 - [x] 16 colors
 - [x] Macro
-- [x] 256 colors
+- [ ] 256 colors
 - [x] Backgrounds
-- [ ] Styling
-  - [ ] Bold
-  - [ ] Faint
-  - [ ] Italic
-  - [ ] Underline
-  - [ ] Slow blink
-  - [ ] Rapid Blink
+- [x] Styling
+- [ ] RGB colors

@@ -18,8 +18,21 @@ fn main() -> anyhow::Result<()> {
         println!("{:?}", token);
     }
 
-    println!("{} {}", "Hello,".light_cyan(), "World!".reset());
-    println!("{}", "Goodbye, Mars!".red().conclude());
+    println!("{} {}", "Hello,".light_cyan().bold(), "World!".reset());
+    // always put "reset" LAST after each style to revert the previous line's styles
+    println!(
+        "{} {} {} {} {} {} {} {}",
+        "Bold".bold(),
+        "Faint".faint().reset(),
+        "Italic".italic().reset(),
+        "Underline".underline().reset(),
+        "Slow Blink".slow_blink().reset(),
+        "Rapid Blink".rapid_blink().reset(),
+        "Reverse".reverse().reset(),
+        "Strike".strike().reset()
+    );
+    // use conclude to stop background bleeding into next lines (try it without conclude!)
+    println!("{}", "Goodbye, Mars!".bg_red().underline().italic().conclude().reset());
 
     Ok(())
 }
